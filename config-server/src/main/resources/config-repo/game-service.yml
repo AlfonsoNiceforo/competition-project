@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 10000
+  player-service:
+    url: player-service:8082

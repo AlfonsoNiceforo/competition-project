@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: game-service-route
+        uri: http://game-service:8081
+        predicates:
+          - Path=/game/**
+        filters:
+            - StripPrefix=1
+      - id: player-service-route
+        uri: http://player-service:8082
+        predicates:
+          - Path=/players/**
+        filters:
+            - StripPrefix=1
+      - id: leaderboard-service-route
+        uri: http://leaderboard-service:8083
+        predicates:
+          - Path=/leaderboard/**
+        filters:
+            - StripPrefix=1
+      - id: statistics-service-route
+        uri: http://statistics-service:8084
+        predicates:
+          - Path=/statistics/**
+        filters:
+            - StripPrefix=1
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+    health:
+      show-details: ALWAYS
