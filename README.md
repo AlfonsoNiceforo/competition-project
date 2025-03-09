@@ -13,8 +13,8 @@ L’applicazione è un'API REST che restituisce dati sugli eventi di un ipotetic
 ## Come avviare il progetto
 Requisiti: avere **Docker** installato
 ```sh
-git clone https://github.com/mio-username/mio-progetto.git
-cd mio-progetto
+git clone https://github.com/AlfonsoNiceforo/competition-project.git
+cd competition-project
 ```
 
 ### Avviare i container
@@ -30,6 +30,6 @@ L’app sarà disponibile su http://localhost:8080
 | POST   | /game               | inserisce nuova partita                                          | {"playerName1" : "Maurizio", "playerName2" : "Pino", "time" : 120}   |
 | GET    | /players            | restituisce lista di giocatori e percentuale di partecipazione   |                                                                      |
 | GET    | /leaderboard        | restituisce la leaderboard dei migliori tempi della prestazione  |                                                                      |
-| GET    | /statistiche        | restituisce le statistiche di accoppiamenti di tutti i giocatori |                                                                      |
-| GET    | /statistiche/team   | restituisce statistiche relative ad una coppia di giocatori      | {"playerName1" : "Maurizio", "playerName2" : "Gianluca"}             |
-| GET    | /statistiche/{Nome} | restituisce dati relativi agli accoppiamenti di un giocatore     |                                                                      |
+| GET    | /statistics         | restituisce le statistiche di accoppiamenti di tutti i giocatori |                                                                      |
+| GET    | /statistics/team    | restituisce statistiche relative ad una coppia di giocatori      | {"playerName1" : "Maurizio", "playerName2" : "Gianluca"}             |
+| GET    | /statistics/{Nome}  | restituisce dati relativi agli accoppiamenti di un giocatore     |                                                                      |
