@@ -13,8 +13,8 @@ L’applicazione è un'API REST che restituisce dati sugli eventi di un ipotetic
 ## Come avviare il progetto
 Requisiti: avere **Docker** installato
 ```sh
-git clone https://github.com/mio-username/mio-progetto.git
-cd mio-progetto
+git clone https://github.com/AlfonsoNiceforo/competition-project.git
+cd competition-project
 ```
 
 ### Avviare i container
