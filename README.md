@@ -22,7 +22,11 @@ cd competition-project
 docker-compose up --build -d
 ```
 
-L’app sarà disponibile su http://localhost:8080 e può essere testata sui seguenti endpoint:
+### **Documentazione API**
+L'API è documentata con **Swagger UI** e può essere esplorata direttamente da un browser all'indirizzo:
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+Si possono comunque testare gli endpoint tramite **Postman** o altri strumenti su http://localhost:8080
 
 ## Endpoint API disponibili
 
