@@ -1,5 +1,6 @@
 server:
   port: 8081
+  forward-headers-strategy: framework
 
 spring:
   kafka:
@@ -15,3 +16,19 @@ feign:
         readTimeout: 10000
   player-service:
     url: player-service:8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    disable-swagger-default-url: true
+    operations-sorter: method
+    tags-sorter: alpha
+  override-with-gateway-url: true

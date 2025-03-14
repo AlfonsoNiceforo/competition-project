@@ -65,8 +65,8 @@ public class StatisticsDAO {
     }
 
 
-    public TeamUsage getTeamData(Players players) {
-        List<String> lista = Arrays.asList(players.getPlayerName1(), players.getPlayerName2());
+    public TeamUsage getTeamData(String playerName1, String playerName2) {
+        List<String> lista = Arrays.asList(playerName1, playerName2);
         Collections.sort(lista);
         String sql = "SELECT * FROM statistics WHERE playerName1 = ? AND playerName2 = ?";
         return jdbcTemplate.queryForObject(

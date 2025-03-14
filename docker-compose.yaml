@@ -1,6 +1,6 @@
 services:
   zookeeper:
-    image: bitnami/zookeeper:3.9
+    image: bitnami/zookeeper:latest
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     healthcheck:
@@ -11,7 +11,7 @@ services:
       start_period: 15s
 
   kafka:
-    image: bitnami/kafka:3.5
+    image: bitnami/kafka:latest
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
@@ -31,7 +31,7 @@ services:
     platform: linux/amd64
     build: ./config-server
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://config-server:8888/application/default"]
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -46,12 +46,23 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      config-server:
+      game-service:
+        condition: service_healthy
+      player-service:
+        condition: service_healthy
+      leaderboard-service:
+        condition: service_healthy
+      statistics-service:
         condition: service_healthy
 
   game-service:
     platform: linux/amd64
     build: ./game-service
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8081/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
       config-server:
         condition: service_healthy
@@ -59,6 +70,11 @@ services:
   player-service:
     platform: linux/amd64
     build: ./player-service
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8082/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
       config-server:
         condition: service_healthy
@@ -66,6 +82,11 @@ services:
   leaderboard-service:
     platform: linux/amd64
     build: ./leaderboard-service
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
       config-server:
         condition: service_healthy
@@ -73,6 +94,11 @@ services:
   statistics-service:
     platform: linux/amd64
     build: ./statistics-service
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8084/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     depends_on:
       config-server:
         condition: service_healthy

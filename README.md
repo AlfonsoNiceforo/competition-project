@@ -21,15 +21,16 @@ cd competition-project
 ```sh
 docker-compose up --build -d
 ```
-L’app sarà disponibile su http://localhost:8080
+
+L’app sarà disponibile su http://localhost:8080 e può essere testata sui seguenti endpoint:
 
 ## Endpoint API disponibili
 
-| Metodo | Endpoint            | Descrizione                                                      | es. Payload                                                          |
-| ------ | ------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------- |
-| POST   | /game               | inserisce nuova partita                                          | {"playerName1" : "Maurizio", "playerName2" : "Pino", "time" : 120}   |
-| GET    | /players            | restituisce lista di giocatori e percentuale di partecipazione   |                                                                      |
-| GET    | /leaderboard        | restituisce la leaderboard dei migliori tempi della prestazione  |                                                                      |
-| GET    | /statistics         | restituisce le statistiche di accoppiamenti di tutti i giocatori |                                                                      |
-| GET    | /statistics/team    | restituisce statistiche relative ad una coppia di giocatori      | {"playerName1" : "Maurizio", "playerName2" : "Gianluca"}             |
-| GET    | /statistics/{Nome}  | restituisce dati relativi agli accoppiamenti di un giocatore     |                                                                      |
+| Metodo | Endpoint                                                   | Descrizione                                                         | es. Payload                                                        |
+| ------ |------------------------------------------------------------|---------------------------------------------------------------------|--------------------------------------------------------------------|
+| POST   | /game                                                      | inserisce nuova partita                                             | {"playerName1" : "Maurizio", "playerName2" : "Pino", "time" : 120} |
+| GET    | /players                                                   | restituisce lista di giocatori e percentuale di partecipazione      |                                                                    |
+| GET    | /leaderboard                                               | restituisce la leaderboard dei migliori tempi della prestazione     |                                                                    |
+| GET    | /statistics                                                | restituisce le statistiche degli accoppiamenti di tutti i giocatori |                                                                    |
+| GET    | /statistics/team?playerName1=Maurizio&playerName2=Gianluca | restituisce statistiche relative ad una coppia di giocatori         |                                                                    |
+| GET    | /statistics/{Nome}                                         | restituisce dati relativi agli accoppiamenti di un giocatore        |                                                                    |

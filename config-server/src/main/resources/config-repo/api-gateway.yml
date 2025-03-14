@@ -1,5 +1,6 @@
 server:
   port: 8080
+  forward-headers-strategy: framework
 
 spring:
   application:
@@ -31,6 +32,20 @@ spring:
           - Path=/statistics/**
         filters:
             - StripPrefix=1
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    urls:
+      - name: game-service
+        url: /game/v3/api-docs
+      - name: player-service
+        url: /players/v3/api-docs
+      - name: leaderboard-service
+        url: /leaderboard/v3/api-docs
+      - name: statistics-service
+        url: /statistics/v3/api-docs
 
 logging:
   level:

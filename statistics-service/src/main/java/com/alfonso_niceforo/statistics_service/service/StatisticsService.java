@@ -20,8 +20,8 @@ public class StatisticsService {
         return statisticsDAO.selectAllTeamData();
     }
 
-    public TeamUsage getCharactersData(Players players) {
-        return statisticsDAO.getTeamData(players);
+    public TeamUsage getCharactersData(String playerName1, String playerName2) {
+        return statisticsDAO.getTeamData(playerName1, playerName2);
     }
 
     public List<Team> getCharacterStatistics(String name) {
